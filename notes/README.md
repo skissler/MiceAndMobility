@@ -1,8 +1,6 @@
 # Project notes
 
-<!-- <details><summary> -->
 <h2> 18 July 2022 </h2>
-<!-- </summary> -->
 
 The goal of this code is to __infer how the probability of transmission depends on the proximity and duration of contact.__ 
 
@@ -58,7 +56,3 @@ I'll begin with a simulation model with discrete events in continuous time. That
 
 Based on this information, can we determine the shape of the kernel? with what precision? And next, we can ask about uncertainty in both the locations and the time of infection. How does this affect our ability to do inference?
 
-
-
-
-<!-- </details> -->
