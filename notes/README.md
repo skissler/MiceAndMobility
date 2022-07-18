@@ -13,8 +13,8 @@ We're starting with a straightforward toy model that specifies the instantaneous
 $$
 	\lambda(d) = 
 	\begin{cases} 
-		k & d \leq d* \\ 
-		0 & d > d*
+		k & d \leq d^* \\ 
+		0 & d > d^*
 	\end{cases} 
 $$ 
 
@@ -44,7 +44,7 @@ $$
 
 The questions become: 
 
-- Given some observations (locations over time, timing of infection), how precisely can we determine the kernel parameters ($k, d* , \alpha, \phi$)? 
+- Given some observations (locations over time, timing of infection), how precisely can we determine the kernel parameters ($k, d^* , \alpha, \phi$)? 
 - Under which circumstances can we distinguish between these models? 
 - When does it matter to be able to distinguish between models? 
 - What sorts of experiments do we need to run (sample size, frequency of observation, precision with which we need to know epidemiologic links) to measure the infection kernel with sufficient accuracy to inform interventions (_e.g.,_ isolation period, gathering size restrictions, general risk communication)? 
@@ -57,5 +57,8 @@ I'll begin with a simulation model with discrete events in continuous time. That
 4. Start the simulation with just two agents moving around. Monitor when the uninfected one gets infected. 
 
 Based on this information, can we determine the shape of the kernel? with what precision? And next, we can ask about uncertainty in both the locations and the time of infection. How does this affect our ability to do inference?
+
+
+
 
 <!-- </details> -->
