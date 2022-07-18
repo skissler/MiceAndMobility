@@ -16,7 +16,9 @@ $$
 	\end{cases} 
 $$ 
 
+<center>
 <img src="2022-07-18-stepfun.png" style="width:50%">
+</center>
 
 - A power-law decay with distance: 
 
