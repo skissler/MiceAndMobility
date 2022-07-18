@@ -11,29 +11,53 @@ update_pos <- function(x, sigma, domainwidth){
 	return(xprop)
 }
 
-# graph1 <- gapminder %>%
-#   ggplot(aes(x=gdpPercap, y=lifeExp, color=continent, size=pop)) +
-#   geom_point(alpha = 0.7, stroke = 0) +
-#   theme_minimal() +
-#   scale_x_log10() +
-#   labs(title = "Life Expectancy vs GDP",
-#        x = "Income",
-#        y = "Life Expectancy",
-#        color = "Continent",
-#        caption = "Source: Gapminder") +
-#   theme(axis.title = element_text(),
-#         legend.text=element_text(size=10)) +
-#   scale_color_brewer(palette = "Set2")
+episim_exp <- function(k=1, phi=1, mu=1, sigma=1, domainwidth=10){
 
-#  graph1.animation = graph1 +
-#   transition_time(year) +
-#   labs(subtitle = "Year: {frame_time}") +
-#   shadow_wake(wake_length = 0.1)
+  # Set initial conditions 
+  t <- 0
+  Sposx <- runif(1)*domainwidth
+  Sposy <- runif(1)*domainwidth
+  Iposx <- runif(1)*domainwidth
+  Iposy <- runif(1)*domainwidth
+  IsInf <- 0
+  eventlist <- tibble(t=t, 
+    Sposx=Sposx, Sposy=Sposy, 
+    Iposx=Iposx, Iposy=Iposy, 
+    IsInf=IsInf)
 
-#  animate(graph1.animation, height = 500, width = 800, fps = 20, duration = 10,
-#         end_pause = 60, res = 100)
+  while(IsInf<1){
 
-#  anim_save("gapminder graph.gif")
+  # Calculate key parameters 
+  d <- sqrt((Sposx-Iposx)^2 + (Sposy-Iposy)^2)
+  lambda <- k*exp(-phi*d)
+  cumrate <- 2*mu + lambda
+
+  # Simulate the time of the next event
+  t <- t+rexp(1, rate=cumrate)
+
+  # Draw the event 
+  eventdraw <- runif(1)
+  if(eventdraw < mu/cumrate){ # S moves
+    Sposx <- update_pos(Sposx, sigma, domainwidth)
+    Sposy <- update_pos(Sposy, sigma, domainwidth)
+  } else if(eventdraw < 2*mu/cumrate){ # I moves
+    Iposx <- update_pos(Iposx, sigma, domainwidth)
+    Iposy <- update_pos(Iposy, sigma, domainwidth)
+  } else { # S gets infected
+    IsInf <- 1
+  }
+
+  # Update the event list
+  eventlist <- bind_rows(eventlist, tibble(t=t, 
+    Sposx=Sposx, Sposy=Sposy, 
+    Iposx=Iposx, Iposy=Iposy, 
+    IsInf=IsInf))
+  
+  }
+
+  return(eventlist)
+
+}
 
 makevideo <- function(eventlist, tstep, file="anim.gif"){
   eventlist_mod <- eventlist %>% 
@@ -63,3 +87,45 @@ makevideo <- function(eventlist, tstep, file="anim.gif"){
   anim_save(paste0(file))
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# graph1 <- gapminder %>%
+#   ggplot(aes(x=gdpPercap, y=lifeExp, color=continent, size=pop)) +
+#   geom_point(alpha = 0.7, stroke = 0) +
+#   theme_minimal() +
+#   scale_x_log10() +
+#   labs(title = "Life Expectancy vs GDP",
+#        x = "Income",
+#        y = "Life Expectancy",
+#        color = "Continent",
+#        caption = "Source: Gapminder") +
+#   theme(axis.title = element_text(),
+#         legend.text=element_text(size=10)) +
+#   scale_color_brewer(palette = "Set2")
+
+#  graph1.animation = graph1 +
+#   transition_time(year) +
+#   labs(subtitle = "Year: {frame_time}") +
+#   shadow_wake(wake_length = 0.1)
+
+#  animate(graph1.animation, height = 500, width = 800, fps = 20, duration = 10,
+#         end_pause = 60, res = 100)
+
+#  anim_save("gapminder graph.gif")
