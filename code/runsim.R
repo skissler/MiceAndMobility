@@ -54,4 +54,4 @@ while(IsInf<1){
 
 }
 
-makevideo(eventlist, tstep=0.1, file="figures/episim.gif")
+# makevideo(eventlist, tstep=0.1, file="figures/episim.gif")
