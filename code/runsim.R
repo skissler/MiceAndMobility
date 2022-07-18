@@ -16,3 +16,4 @@ episim_exp(k=k, phi=phi, mu=mu, sigma=sigma, domainwidth=domainwidth)
 
 
 # makevideo(eventlist, tstep=0.1, file="figures/episim.gif")
+

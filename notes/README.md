@@ -56,3 +56,6 @@ I'll begin with a simulation model with discrete events in continuous time. That
 
 Based on this information, can we determine the shape of the kernel? with what precision? And next, we can ask about uncertainty in both the locations and the time of infection. How does this affect our ability to do inference?
 
+---
+
+Let's start with some simple visualizations of the time to infection occuring: 
