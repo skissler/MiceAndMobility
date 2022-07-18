@@ -16,7 +16,7 @@ $$
 	\end{cases} 
 $$ 
 
-<img src="stepfun.pdf" style="width:50%">
+<img src="stepfun.png" style="width:50%">
 
 - A power-law decay with distance: 
 
