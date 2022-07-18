@@ -10,7 +10,7 @@ We're starting with a straightforward toy model that specifies the instantaneous
 
 $$ \lambda(d) = 
 	\begin{cases} 
-		k & d \leq d*
+		k & d \leq d* \\ 
 		0 & d > d*
 	\end{cases} 
 $$ 
