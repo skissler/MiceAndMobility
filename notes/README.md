@@ -46,7 +46,8 @@ I'll begin with a simulation model with discrete events in continuous time. That
 1. pick a movement distribution (normal with mean 0 and some standard deviation $\sigma$) 
 2. pick a movement rate - a kinetic energy of the population. Call it $\mu$.
 3. define the hazard of infection as a function with distance. We’ll use $\lambda = k e^{-\phi d}$, where we’ll need to specify *k* (the hazard of infection at proximity of 0) and φ (the exponential rate at which the infection hazard decays)
-4. We’ll start the simulation with just two agents moving around. We’ll monitor when the uninfected one gets infected. Based on this information, can we determine the shape of the kernel? with what precision? 
-5. Next, we can ask about uncertainty in both the locations and the time of infection. How does this affect our ability to do inference?
+4. We’ll start the simulation with just two agents moving around. We’ll monitor when the uninfected one gets infected. 
+
+Based on this information, can we determine the shape of the kernel? with what precision? And next, we can ask about uncertainty in both the locations and the time of infection. How does this affect our ability to do inference?
 
 <!-- </details> -->
