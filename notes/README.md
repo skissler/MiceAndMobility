@@ -1,7 +1,7 @@
 # Project notes
 
 <!-- <details><summary> -->
-	<h2> 18 July 2022 </h2>
+<h2> 18 July 2022 </h2>
 <!-- </summary> -->
 
 The goal of this code is to __infer how the probability of transmission depends on the proximity and duration of contact.__ 
