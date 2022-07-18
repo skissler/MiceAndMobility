@@ -1,14 +1,3 @@
-<head>
-img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-}
-</head>
-
-<body>
-
 # Project notes
 
 <!-- <details><summary> -->
@@ -29,10 +18,7 @@ $$
 	\end{cases} 
 $$ 
 
-<!-- <center> -->
-<!-- <img src="2022-07-18-stepfun.png" style="width:50%"> -->
-<img src="2022-07-18-stepfun.png" style="width:50%; margin-left=auto; margin-right=auto">
-<!-- </center> -->
+<img src="2022-07-18-stepfun.png" style="width:50%">
 
 - A power-law decay with distance: 
 
