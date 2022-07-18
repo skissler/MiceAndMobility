@@ -58,4 +58,6 @@ Based on this information, can we determine the shape of the kernel? with what p
 
 ---
 
-Let's start with some simple visualizations of the time to infection occuring: 
+Let's start with some simple visualizations of the time to infection occuring, in branch `Explore`: 
+
+
