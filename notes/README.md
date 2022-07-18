@@ -38,6 +38,10 @@ $$
 	\lambda(d) = k e^{-\phi d}
 $$ 
 
+<p align="center">
+<img src="2022-07-18-expfun.png" style="width:50%">
+</p>
+
 The questions become: 
 
 - Given some observations (locations over time, timing of infection), how precisely can we determine the kernel parameters ($k, d* , \alpha, \phi$)? 
