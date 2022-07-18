@@ -29,7 +29,7 @@ $$
 $$ 
 
 <p align="center">
-<img src="2022-07-18-power.png" style="width:50%">
+<img src="2022-07-18-powerfun.png" style="width:50%">
 </p>
 
 - An exponential decay with distance: 
