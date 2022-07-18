@@ -28,6 +28,10 @@ $$
 	\lambda(d) = \frac{k}{1 + d^\alpha}
 $$ 
 
+<p align="center">
+<img src="2022-07-18-power.png" style="width:50%">
+</p>
+
 - An exponential decay with distance: 
 
 $$ 
