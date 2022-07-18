@@ -58,9 +58,20 @@ Based on this information, can we determine the shape of the kernel? with what p
 
 ---
 
-Let's start with some simple visualizations of the time to infection occuring, in branch `Explore`: 
+Let's start with some simple visualizations of the time to infection occuring, in branch `Explore`.
+
+First, here's a histogram of the times when infections occur: 
 
 <p align="center">
 <img src="2022-07-18-tinfhist.png" style="width:50%">
 </p>
+
+Seems... reasonable. Now let's look at the distance between individuals when the infection occurs: 
+
+<p align="center">
+<img src="2022-07-18-dinfhist.png" style="width:50%">
+</p>
+
+Seems like this will be much more informative. 
+
 
