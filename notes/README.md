@@ -1,5 +1,5 @@
 <head>
-.imgcenter {
+img {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -31,7 +31,7 @@ $$
 
 <!-- <center> -->
 <!-- <img src="2022-07-18-stepfun.png" style="width:50%"> -->
-<img src="2022-07-18-stepfun.png" class="imgcenter">
+<img src="2022-07-18-stepfun.png">
 <!-- </center> -->
 
 - A power-law decay with distance: 
