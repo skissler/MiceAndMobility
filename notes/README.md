@@ -6,7 +6,7 @@
 
 The goal of this code is to __infer how the probability of transmission depends on the proximity and duration of contact.__ 
 
-We're starting with a straightforward toy model that specifies the instantaneous hazard (force) of infection, $\lambda$. This hazard can take a few forms: 
+We're starting with a straightforward toy model that specifies the instantaneous hazard (force) of infection, $\lambda.$ This hazard can take a few forms: 
 
 - A step function: 
 
