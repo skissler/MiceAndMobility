@@ -72,6 +72,6 @@ Seems... reasonable. Now let's look at the distance between individuals when the
 <img src="2022-07-18-dinfhist.png" style="width:50%">
 </p>
 
-Seems like this will be much more informative. 
+Seems like this will be much more informative (for the step function, for example, we wouldn't see any infections occurring past $d^* $). 
 
 
