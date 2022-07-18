@@ -16,6 +16,8 @@ $$
 	\end{cases} 
 $$ 
 
+![step function](2022-07-18-stepfun.png)
+
 - A power-law decay with distance: 
 
 $$ 
