@@ -1,6 +1,6 @@
 # Project notes
 
-## 18 July 2022 
+<details><summary>## 18 July 2022 </summary>
 
 The goal of this code is to __infer how the probability of transmission depends on the proximity and duration of contact.__ 
 
@@ -34,3 +34,5 @@ The questions become:
 - Under which circumstances can we distinguish between these models? 
 - When does it matter to be able to distinguish between models? 
 - What sorts of experiments do we need to run (sample size, frequency of observation, precision with which we need to know epidemiologic links) to measure the infection kernel with sufficient accuracy to inform interventions (_e.g.,_ isolation period, gathering size restrictions, general risk communication)? 
+
+</details>
