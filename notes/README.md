@@ -1,3 +1,10 @@
+.imgcenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
 # Project notes
 
 <!-- <details><summary> -->
@@ -19,7 +26,8 @@ $$
 $$ 
 
 <center>
-<img src="2022-07-18-stepfun.png" style="width:50%">
+<!-- <img src="2022-07-18-stepfun.png" style="width:50%"> -->
+<img src="2022-07-18-stepfun.png" class="imgcenter">
 </center>
 
 - A power-law decay with distance: 
