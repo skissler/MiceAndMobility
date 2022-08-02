@@ -138,6 +138,8 @@ Alright - I've ended up with something like
 
 $$ \lambda(d) = \frac{k [1 + (1 - \frac{\phi d^* }{\alpha})^\alpha]}{1 + (1 + \frac{\phi (d - d^* )}{\alpha})^\alpha} $$
 
+That's almost it - it behaves like I want it to for large $\alpha$, but strangely for small parameter values (near 1). Getting somewhere though. 
+
 
 
 
