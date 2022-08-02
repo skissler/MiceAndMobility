@@ -82,8 +82,27 @@ I've now implemented the power and step kernels. Let's have a look at what the t
 <img src="dinf_stp.png" style="width:50%">
 </p>
 
+<p align="center">
+<img src="dinf_pow.png" style="width:50%">
+</p>
 
+<p align="center">
+<img src="dinf_exp.png" style="width:50%">
+</p>
 
+and the times of infection: 
+
+<p align="center">
+<img src="tinf_stp.png" style="width:50%">
+</p>
+
+<p align="center">
+<img src="tinf_pow.png" style="width:50%">
+</p>
+
+<p align="center">
+<img src="tinf_exp.png" style="width:50%">
+</p>
 
 
 
