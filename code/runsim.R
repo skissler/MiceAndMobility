@@ -49,16 +49,19 @@ ggsave(fig_tinf_stp, file="notes/tinf_stp.png", width=5, height=3)
 
 fig_dinf_exp <- ggplot(data=tinfdf_exp, aes(x=sqrt((Sposx-Iposx)^2+(Sposy-Iposy)^2))) + 
 	geom_histogram(aes(y=..density..),binwidth=0.25,fill="white",col="darkgray") +
+	scale_x_continuous(limits=c(0,domainwidth)) + 
 	labs(title="Exponential kernel", x="Distance at time of infection", y="Density") + 
 	theme_classic()
 
 fig_dinf_pow <- ggplot(data=tinfdf_pow, aes(x=sqrt((Sposx-Iposx)^2+(Sposy-Iposy)^2))) + 
 	geom_histogram(aes(y=..density..),binwidth=0.25,fill="white",col="darkgray") +
+	scale_x_continuous(limits=c(0,domainwidth)) + 
 	labs(title="Power kernel", x="Distance at time of infection", y="Density") + 
 	theme_classic()
 
 fig_dinf_stp <- ggplot(data=tinfdf_stp, aes(x=sqrt((Sposx-Iposx)^2+(Sposy-Iposy)^2))) + 
 	geom_histogram(aes(y=..density..),binwidth=0.25,fill="white",col="darkgray") +
+	scale_x_continuous(limits=c(0,domainwidth)) + 
 	labs(title="Step kernel", x="Distance at time of infection", y="Density") + 
 	theme_classic()
 
