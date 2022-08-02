@@ -11,7 +11,7 @@ mu <- 1            # Rate of movements
 k <- 1             # Force of infection when distance = 0
 phi <- 1           # Rate of decay of the distance kernel 
 
-
+# Run 1000 sims and extract the time and position of infection:
 tinfdf <- lapply(1:1000, function(x){
 	episim_exp(k=k, phi=phi, mu=mu, sigma=sigma, domainwidth=domainwidth) %>% 
 	filter(IsInf==1)}) %>% bind_rows()
