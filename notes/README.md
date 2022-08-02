@@ -134,6 +134,10 @@ Recall that the standard logistic function is
 
 $$ \frac{1}{1 + e^{-x}} $$ 
 
+Alright - I've ended up with something like 
+
+$$ \lambda(d) = \frac{k [1 + (1 - \frac{\phi d^* }{\alpha})^\alpha]}{1 + (1 + \frac{\phi (d - d^* )}{\alpha})^\alpha} $$
+
 
 
 
