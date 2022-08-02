@@ -124,7 +124,9 @@ and so
 
 $$ k e^{-\phi d} = \lim_{\alpha \rightarrow \infty} k \Bigl( 1 + \frac{\phi d}{\alpha}\Bigr)^{-\alpha} $$
 
-that's more in line with the parameterization I'd proposed earlier. 
+that's more in line with the parameterization I'd proposed earlier. What about the step function? Any way to get this thing consistent with something logistic? Because for now the kernel we're working with is 
+
+$$ \lambda(d)  = k \Bigl( 1 + \frac{\phi d}{\alpha}\Bigl)^{-\alpha} $$
 
 
 
