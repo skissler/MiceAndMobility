@@ -122,7 +122,7 @@ $$ e^{-x} = \lim_{n \rightarrow \infty} (1 + \frac{x}{n})^{-n}$$
 
 and so 
 
-$$ k e^{-\phi d} = \lim_{\alpha \rightarrow \infty} k ( 1 + \frac{\phi d}{\alpha})^{-\alpha} $$
+$$ k e^{-\phi d} = \lim_{\alpha \rightarrow \infty} k \Bigl( 1 + \frac{\phi d}{\alpha}\Bigr)^{-\alpha} $$
 
 that's more in line with the parameterization I'd proposed earlier. 
 
