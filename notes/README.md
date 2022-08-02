@@ -42,7 +42,7 @@ $$
 
 The questions become: 
 
-- Given some observations (locations over time, timing of infection), how precisely can we determine the kernel parameters ($k_x$ $d^*$ , $\alpha$, $\phi$)? 
+- Given some observations (locations over time, timing of infection), how precisely can we determine the kernel parameters ( $k$, $d^*$ , $\alpha$, $\phi$)? 
 - Under which circumstances can we distinguish between these models? 
 - When does it matter to be able to distinguish between models? 
 - What sorts of experiments do we need to run (sample size, frequency of observation, precision with which we need to know epidemiologic links) to measure the infection kernel with sufficient accuracy to inform interventions (_e.g.,_ isolation period, gathering size restrictions, general risk communication)? 
