@@ -128,6 +128,10 @@ that's more in line with the parameterization I'd proposed earlier. What about t
 
 $$ \lambda(d)  = k \Bigl( 1 + \frac{\phi d}{\alpha}\Bigl)^{-\alpha} $$
 
+which is a power function that approximates an exponential function with decay rate $\phi$ as $\alpha$ increases. 
+
+
+
 
 
 
