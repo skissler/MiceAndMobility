@@ -76,7 +76,11 @@ Seems like this will be much more informative (for the step function, for exampl
 
 ## 2 Aug 2022
 
+I've now implemented the power and step kernels. Let's have a look at what the time and distance of infection looks like for these, side-by-side with the exponential kernel: 
 
+<center>
+<img src="dinf_stp.png" style="width:50%">
+</center>
 
 
 
