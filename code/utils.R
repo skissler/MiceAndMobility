@@ -2,16 +2,27 @@ library(tidyverse)
 library(animation)
 library(gganimate)
 
+# Update an agent's position in 1D using a N(0,sigma)
 update_pos <- function(x, sigma, domainwidth){
 	accept <- 0
 	while(accept<1){
-		xprop <- rnorm(1, x,sigma)
+		xprop <- rnorm(1,x,sigma)
 		if(xprop>0 & xprop<domainwidth){accept <- 1}
 	}
 	return(xprop)
 }
 
-episim_exp <- function(k=1, phi=1, mu=1, sigma=1, domainwidth=10){
+# Simulate a two-agent epidemic
+#   k: kernel intercept
+#   scale: the kernel scale paramter, either d*, alpha, or phi (see below)
+#   mu: movement rate (units 1/time) 
+#   sigma: sd of movement distance 
+#   domainwidth: width of the square domain 
+#   kernel: specification of transmission kernel, one of: 
+#     stp: k if d ≤ d*, 0 otherwise.
+#     pow: k/(1 + d^alpha)
+#     exp: k e^(-phi*d)
+episim <- function(k=1, scale=1, mu=1, sigma=1, domainwidth=10, kernel="exp"){
 
   # Set initial conditions 
   t <- 0
@@ -29,7 +40,16 @@ episim_exp <- function(k=1, phi=1, mu=1, sigma=1, domainwidth=10){
 
   # Calculate key parameters 
   d <- sqrt((Sposx-Iposx)^2 + (Sposy-Iposy)^2)
-  lambda <- k*exp(-phi*d)
+  if(kernel=="exp"){
+    lambda <- k*exp(-scale*d)  
+  } else if(kernel=="pow"){
+    lambda <- k/(1 + d^scale)
+  } else if(kernel=="stp"){
+    lambda <- ifelse(d <= scale, k, 0)
+  } else {
+    stop("Unspecified kernel")
+  }
+  
   cumrate <- 2*mu + lambda
 
   # Simulate the time of the next event
@@ -58,6 +78,55 @@ episim_exp <- function(k=1, phi=1, mu=1, sigma=1, domainwidth=10){
   return(eventlist)
 
 }
+
+
+# episim_exp <- function(k=1, phi=1, mu=1, sigma=1, domainwidth=10){
+
+#   # Set initial conditions 
+#   t <- 0
+#   Sposx <- runif(1)*domainwidth
+#   Sposy <- runif(1)*domainwidth
+#   Iposx <- runif(1)*domainwidth
+#   Iposy <- runif(1)*domainwidth
+#   IsInf <- 0
+#   eventlist <- tibble(t=t, 
+#     Sposx=Sposx, Sposy=Sposy, 
+#     Iposx=Iposx, Iposy=Iposy, 
+#     IsInf=IsInf)
+
+#   while(IsInf<1){
+
+#   # Calculate key parameters 
+#   d <- sqrt((Sposx-Iposx)^2 + (Sposy-Iposy)^2)
+#   lambda <- k*exp(-phi*d)
+#   cumrate <- 2*mu + lambda
+
+#   # Simulate the time of the next event
+#   t <- t+rexp(1, rate=cumrate)
+
+#   # Draw the event 
+#   eventdraw <- runif(1)
+#   if(eventdraw < mu/cumrate){ # S moves
+#     Sposx <- update_pos(Sposx, sigma, domainwidth)
+#     Sposy <- update_pos(Sposy, sigma, domainwidth)
+#   } else if(eventdraw < 2*mu/cumrate){ # I moves
+#     Iposx <- update_pos(Iposx, sigma, domainwidth)
+#     Iposy <- update_pos(Iposy, sigma, domainwidth)
+#   } else { # S gets infected
+#     IsInf <- 1
+#   }
+
+#   # Update the event list
+#   eventlist <- bind_rows(eventlist, tibble(t=t, 
+#     Sposx=Sposx, Sposy=Sposy, 
+#     Iposx=Iposx, Iposy=Iposy, 
+#     IsInf=IsInf))
+  
+#   }
+
+#   return(eventlist)
+
+# }
 
 makevideo <- function(eventlist, tstep, file="anim.gif"){
   eventlist_mod <- eventlist %>% 
