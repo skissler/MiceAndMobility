@@ -136,7 +136,7 @@ $$ \frac{1}{1 + e^{-x}} $$
 
 Alright - I've ended up with something like 
 
-$$ \lambda(d) = \frac{k [1 + (1 - \frac{\phi d^* }{\alpha})^\alpha]}{1 + (1 + \frac{\phi (d - d^* )}{\alpha})^\alpha} $$
+$$ \lambda(d) = \frac{k \Bigl[1 + (1 - \frac{\phi d^* }{\alpha})^\alpha\Bigr]}{1 + \Bigl(1 + \frac{\phi (d - d^* )}{\alpha}\Bigr)^\alpha} $$
 
 That's almost it - it behaves like I want it to for large $\alpha$, but strangely for small parameter values (near 1). Getting somewhere though. 
 
