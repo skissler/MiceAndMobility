@@ -130,6 +130,10 @@ $$ \lambda(d)  = k \Bigl( 1 + \frac{\phi d}{\alpha}\Bigl)^{-\alpha} $$
 
 which is a power function that approximates an exponential function with decay rate $\phi$ as $\alpha$ increases. 
 
+Recall that the standard logistic function is 
+
+$$ \frac{1}{1 + e^{-x}} $$ 
+
 
 
 
