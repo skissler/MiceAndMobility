@@ -104,6 +104,12 @@ and the times of infection:
 <img src="tinf_exp.png" style="width:50%">
 </p>
 
+Let's have a look at exactly what the kernels look like (how should we ensure comparability between them, somehow? something like a common area under the curve?): 
+
+<p align="center">
+<img src="kernels.png" style="width:50%">
+</p>
+
 
 
 

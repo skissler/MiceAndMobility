@@ -11,6 +11,23 @@ mu <- 1            # Rate of movements
 k <- 1             # Force of infection when distance = 0
 scl <- 1           # Scale parameter for the distance kernel
 
+# Plot the kernels: 
+dvals <- seq(from=0, to=domainwidth, by=0.1)
+kerneldf <- tibble(d=dvals) %>% 
+	mutate(lexp=k*exp(-scl*d)) %>%
+	mutate(lpow=k/(1+d^scl)) %>% 
+	mutate(lstp=ifelse(d<=scl,k,0))
+fig_kernels <- kerneldf %>% 
+	pivot_longer(-d) %>% 
+	ggplot(aes(x=d, y=value, col=name)) + 
+		geom_line() + 
+		scale_color_manual(values=c("lexp"="blue","lpow"="red","lstp"="black"), labels=c("lexp"="Exponential","lpow"="Power","lstp"="Step")) + 
+		theme_classic() + 
+		labs(x="Distance", y="Force of infection (λ)") + 
+		theme(legend.title=element_blank())
+ggsave(fig_kernels, file="notes/kernels.png", width=5, height=3)
+
+
 # Run 1000 sims and extract the time and position of infection:
 tinfdf_exp <- lapply(1:1000, function(x){
 	episim(k=k, scale=scl, mu=mu, sigma=sigma, domainwidth=domainwidth, kernel="exp") %>% 
