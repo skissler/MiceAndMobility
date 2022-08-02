@@ -110,7 +110,15 @@ Let's have a look at exactly what the kernels look like (how should we ensure co
 <img src="kernels.png" style="width:50%">
 </p>
 
+Given this, it makes sense why the power function would yield such shorter times-to-infection, since there's still substantial force of infection even at the longest distances. The exponential kernel looks a lot more like the step kernel. 
 
+One option might be to come up with a general sigmoidal kernel that has an (optional) neck, something that accommodates power, exponential, and step-like forces of infection. Monotonically decreasing, with at most one change in concavity. That should specify a pretty general class of things. And then the question is: how do these kernels differ in the spread of infection? To what extent can we distinguish between them, and when does it matter to distinguish between them? 
+
+What might such a kernel look like? 
+
+Going back to the distance kernels from my thesis: recall that 
+
+$$ e^{-x} = \lim_{n \rightarrow \infty} (1 + \frac{x}{n})^{-n}$$ 
 
 
 
