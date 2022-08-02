@@ -74,4 +74,5 @@ Seems... reasonable. Now let's look at the distance between individuals when the
 
 Seems like this will be much more informative (for the step function, for example, we wouldn't see any infections occurring past $d^* $). 
 
+## 2 Aug 2022
 
