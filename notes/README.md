@@ -149,7 +149,29 @@ That's almost it - it behaves like I want it to for large $\alpha$, but strangel
 
 # 26 Aug 2022 
 
+I'm going to try to summarize my last meeting with Mark - we'd decided on drafting something of a grant proposal, and it was clear in my head then. It's not clear anymore. Going to try to make it clear again. 
 
+--- 
+
+His idea, I think, was that we have some kind of function we're interested in: like 
+
+$$ \text{contagiousness} = f(\text{infectiousness}, \text{susceptibility}, \text{contact distance}, \text{contact duration}) $$ 
+
+He was claiming that infectiousness and susceptibility are independent: 
+
+$$ p_c = p_i p_s p_{cd} p_{ct} $$ 
+
+and also that 
+
+$$ \text{infection event} = f(\text{contagiousness},\text{contact frequency}) $$ 
+
+where 
+
+$$ p_e = p_c p_f $$ 
+
+I'm not sure these are all the right terms, but that's what we're starting with. 
+
+I think that my angle was that we could incorporate something like this into the renewal equation framework, and ask questions about inference. 
 
 
 
