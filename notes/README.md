@@ -171,7 +171,11 @@ $$ p_e = p_c p_f $$
 
 I'm not sure these are all the right terms, but that's what we're starting with. 
 
-I think that my angle was that we could incorporate something like this into the renewal equation framework, and ask questions about inference. 
+I think that my angle was that we could incorporate something like this into the renewal equation framework, and ask questions about inference. What set of probability functions are relevant here? Essentially, how can we build up an SIR-like model from a statistical-mechanic framework? 
+
+And a key question: what is it that we're trying to describe with the equations? The probability of getting infected? The total number of infected people? Probably the latter - this is the closest analog to the Boltzman equations - but we'll probably want to aim for both. 
+
+
 
 
 
