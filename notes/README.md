@@ -1,6 +1,11 @@
-# Project notes
+__Jump to__ 
 
-## 18 July 2022 
+- [18 July 2022](#18-July-2022)
+- [2 Aug 2022](#2-Aug-2022)
+- [26 Aug 2022](#26-Aug-2022)
+
+
+# 18 July 2022 
 
 The goal of this code is to __infer how the probability of transmission depends on the proximity and duration of contact.__ 
 
@@ -74,7 +79,7 @@ Seems... reasonable. Now let's look at the distance between individuals when the
 
 Seems like this will be much more informative (for the step function, for example, we wouldn't see any infections occurring past $d^* $). 
 
-## 2 Aug 2022
+# 2 Aug 2022
 
 I've now implemented the power and step kernels. Let's have a look at what the time and distance of infection looks like for these, side-by-side with the exponential kernel: 
 
@@ -141,6 +146,8 @@ $$ \lambda(d) = \frac{k \Bigl[1 + (1 - \frac{\phi d^* }{\alpha})^\alpha\Bigr]}{1
 That's almost it - it behaves like I want it to for large $\alpha$, but strangely for small parameter values (near 1). Getting somewhere though. 
 
 
+
+# 26 Aug 2022 
 
 
 
