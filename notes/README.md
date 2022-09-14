@@ -195,7 +195,11 @@ $$ \dot{S} = -F(t) S(t)$$
 
 where $F(t)$ is the force of infection at time $t$ and $S(t)$ is the proportion of susceptible individuals in the population. 
 
+Furthermore, we can express $F(t)$ in terms of all of the infections that have come before time $t$: 
 
+$$ F(t) = \int_0^\infty F(t-\tau) S(t-\tau) A(\tau) d\tau $$ 
+
+The intuition here is that the force of infection $F$ at time $t$ is equal to the total incidence from all times prior to that point ($F(t-\tau) S(t-\tau)$) multiplied by the infectiousness profile A(\tau), indexed from the time of infection. 
 
 
 
