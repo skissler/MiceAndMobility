@@ -215,7 +215,7 @@ $$ F(t) = \beta I(t) $$
 
 What does that give us? Well, we can look at an expression for the prevalence of infectious individuals at time $t$, $I(t)$: 
 
-$$ I(t) = \int_0^\infty F(t-\tau) S(t-\tau) P(I_tau) d\tau $$ 
+$$ I(t) = \int_0^\infty F(t-\tau) S(t-\tau) P(I_\tau) d\tau $$ 
 
 where $P(I_\tau)$ is the probability that a person is still in the infectious compartment at time $\tau$ after infection. For the SIR model, that probability is 
 
