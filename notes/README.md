@@ -209,7 +209,11 @@ $$ \frac{dI}{dt} = \beta I S - \alpha I $$
 
 $$ \frac{dR}{dt} = \alpha I $$
 
+Note that here the force of infection is 
 
+$$ F(t) = \beta I(t) $$ 
+
+What does that give us? Well, we can look at an expression for the prevalence of infectious individuals at time $t$, $I(t)$: 
 
 
 
