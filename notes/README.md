@@ -204,7 +204,9 @@ The intuition here is that the force of infection $F$ at time $t$ is equal to th
 Now: how does this relate to the standard SIR and SEIR models? Let's begin with the SIR model: 
 
 $$ \frac{dS}{dt} = -\beta I S $$ 
+
 $$ \frac{dI}{dt} = \beta I S - \alpha I $$ 
+
 $$ \frac{dR}{dt} = \alpha I $$
 
 
