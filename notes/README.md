@@ -240,7 +240,17 @@ $$ A(\tau) = \beta e^{-\alpha \tau} $$
 
 which is what's reported by Breda and colleagues. 
 
+---
 
+Now, we can do the same thing for the SEIR model: 
+
+$$ \frac{dS}{dt} = -\beta I S $$ 
+
+$$ \frac{dE}{dt} = \beta I S - \gamma E $$
+
+$$ \frac{dI}{dt} =  \gamma E - \alpha I $$ 
+
+$$ \frac{dR}{dt} = \alpha I $$
 
 
 
