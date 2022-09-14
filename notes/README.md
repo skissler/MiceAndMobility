@@ -3,6 +3,7 @@ __Jump to__
 - [18 July 2022](#18-July-2022)
 - [2 Aug 2022](#2-Aug-2022)
 - [26 Aug 2022](#26-Aug-2022)
+- [9 Sep 2022](#9-Sep-2022)
 
 
 # 18 July 2022 
@@ -176,10 +177,11 @@ I think that my angle was that we could incorporate something like this into the
 And a key question: what is it that we're trying to describe with the equations? The probability of getting infected? The total number of infected people? Probably the latter - this is the closest analog to the Boltzman equations - but we'll probably want to aim for both. 
 
 
+# 9 Sep 2022 
 
+Thinking of things to put into a grant proposal: 
 
-
-
+the infectiousness distribution (the thing you integrate to get R0) is a function of things both inherent to the virus and to behavior - critically, to the way people move and interact. How can we build this up from first principles? What data would we need to collect to specify this? What underlying mechanics are consistent with a given epidemiological model?
 
 
 
