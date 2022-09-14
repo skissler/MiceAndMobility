@@ -297,6 +297,7 @@ How can we build up an $A(\tau$) from a statistical mechanic standpoint? Let's s
 
 I think that the assumption here is that a person has constant infectiousness for their entire duration of infection, and that the duration of infection has a time that's distributed exponentially (that is, a constant rate of leaving the infectious compartment). 
 
+The first step, I think, is to make sure that this re-captures the form of $A(\tau)$ that we expect. Then, we can ask: are there other underlying dynamics that would be conisistent with this? 
 
 
 
