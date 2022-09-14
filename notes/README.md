@@ -252,7 +252,9 @@ $$ \frac{dI}{dt} =  \gamma E - \alpha I $$
 
 $$ \frac{dR}{dt} = \alpha I $$
 
+The incidence is once again
 
+$$ I(t) = \int_0^\infty F(t-\tau) S(t-\tau) P(I_\tau) d\tau $$ 
 
 
 
