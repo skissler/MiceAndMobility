@@ -189,6 +189,14 @@ the infectiousness distribution (the thing you integrate to get R0) is a functio
 
 I've gone back to Breda _et al._'s paper, ["On the formulation of epidemic models (an appraisal of Kermack and McKendrick)"](https://www.tandfonline.com/doi/full/10.1080/17513758.2012.716454) to get to grips with renewal equations. I think I've gotten the intuition and its link with the mathematics. I'm going to write it out here so I can refer back when I need to:
 
+The idea behind the renewal equations is this: we begin with the most general transmission model, where 
+
+$$ \dot{S} = -F(t) S(t)$$ 
+
+where $F(t)$ is the force of infection at time $t$ and $S(t)$ is the proportion of susceptible individuals in the population. 
+
+
+
 
 
 
