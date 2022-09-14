@@ -201,6 +201,12 @@ $$ F(t) = \int_0^\infty F(t-\tau) S(t-\tau) A(\tau) d\tau $$
 
 The intuition here is that the force of infection $F$ at time $t$ is equal to the total incidence from all times prior to that point ( $F(t-\tau) S(t-\tau)$ ) multiplied by the infectiousness profile $A(\tau)$, indexed from the time of infection. 
 
+Now: how does this relate to the standard SIR and SEIR models? Let's begin with the SIR model: 
+
+$$ \frac{dS}{dt} = -\beta I S $$ 
+$$ \frac{dI}{dt} = \beta I S - \alpha I $$ 
+$$ \frac{dR}{dt} = \alpha I $$
+
 
 
 
