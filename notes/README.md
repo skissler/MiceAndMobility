@@ -295,6 +295,8 @@ The next thing is to figure out what underlying assumptions are baked into the $
 
 How can we build up an $A(\tau$) from a statistical mechanic standpoint? Let's start with the SIR: 
 
+I think that the assumption here is that a person has constant infectiousness for their entire duration of infection, and that the duration of infection has a time that's distributed exponentially (that is, a constant rate of leaving the infectious compartment). 
+
 
 
 
