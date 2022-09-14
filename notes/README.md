@@ -228,7 +228,17 @@ $$ 1 - e^{-\alpha \tau} $$
 which is the fraction of people who have left the compartment at time $\tau$. 1 - this is therefore the number of people remaining. What does this give us? 
 
 
+$$ I(t) = \int_0^\infty F(t-\tau) S(t-\tau) e^{-\alpha \tau} d\tau $$ 
 
+And we also know that 
+
+$$ F(t) = \beta I(t) = \int_0^\infty F(t-\tau) S(t-\tau) \beta e^{-\alpha \tau} d\tau $$ 
+
+and so 
+
+$$ A(\tau) = \beta e^{-\alpha \tau} $$ 
+
+which is what's reported by Breda and colleagues. 
 
 
 
