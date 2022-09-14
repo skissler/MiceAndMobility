@@ -270,6 +270,27 @@ Putting this together, we get
 
 $$ P(I_\tau) = \int_{\xi=0}^{\tau} \gamma e^{-\gamma \tau} e^{-\alpha(\tau-\xi)} d\xi$$ 
 
+here the integral is over all possible progression times $\xi$ from 0 to time $\tau$. 
+
+This integral is straightforward to solve (pull out the $\tau$ terms, combine the exponentials, and you end up with the integral of a single exponential function); doing so gives us 
+
+$$ P(I_\tau) = \frac{\gamma}{\gamma-\alpha} [e^{-\alpha \tau} - e^{-\gamma \tau}]$$
+
+which we multiply by $\beta$ to get $A(\tau)$ as before. This again aligns with with Breda and colleagues found. 
+
+---
+
+So, I'm now happy that I have some intuition around how to translate from a set of ordinary differential equations to the renewal equation framework. The steps are: 
+
+- Write the force of infection from the ODEs. 
+- Write the integral equation giving the current prevalence as a function of past force of infection times past susceptibility times the probability of remaining infectious at time $\tau$. 
+- Figure out what this probability of remaining in the $I$ compartment at time $\tau$ is; that's the bulk of what $A(\tau)$ will be. 
+- Multiply by any remaining terms to get back to the force of infection. You should now have an expression for $A(\tau)$. 
+
+I'm not exactly sure how to go in the other direction (Breda says that it's an iff, but I've only gone ODE $\rightarrow$ renewal equation). Still, this is a good place to start. 
+
+
+
 
 
 
