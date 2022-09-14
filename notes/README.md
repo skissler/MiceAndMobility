@@ -256,6 +256,19 @@ The incidence is once again
 
 $$ I(t) = \int_0^\infty F(t-\tau) S(t-\tau) P(I_\tau) d\tau $$ 
 
+Here, the probability that a person is still in the $I$ compartment is more complex: it's the probability that they've already progressed past the $E$ compartment multiplied by the probability that they ahven't yet progressed to the $R$ compartment. 
+
+The probability of progression from $E$ at time $\xi$ follows the density 
+
+$$ \gamma e^{-\gamma \tau} $$ 
+
+and of this fraction of people who have progressed at time $\xi$, the probability that they're still in $I$ is 
+
+$$ e^{-\alpha(t-\xi)} $$
+
+Putting this together, we get 
+
+$$ P(I_\tau) = \int_{\xi=0}^{\tau} \gamma e^{-\gamma \tau} e^{-\alpha(\tau-\xi)} d\xi$$ 
 
 
 
