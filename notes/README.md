@@ -215,6 +215,20 @@ $$ F(t) = \beta I(t) $$
 
 What does that give us? Well, we can look at an expression for the prevalence of infectious individuals at time $t$, $I(t)$: 
 
+$$ I(t) = \int_0^\infty F(t-\tau) S(t-\tau) P(I_tau) d\tau $$ 
+
+where $P(I_\tau)$ is the probability that a person is still in the infectious compartment at time $\tau$ after infection. For the SIR model, that probability is 
+
+$$ P(I_\tau) = e^{-\alpha \tau} $$ 
+
+That's because we're assuming a constant rate of leaving the compartment ( $\alpha$ ), and that yields an exponential distribution for the waiting times for leaving the compartment, and thus we have as the CDF of the relevant distribution 
+
+$$ 1 - e^{-\alpha \tau} $$ 
+
+which is the fraction of people who have left the compartment at time $\tau$. 1 - this is therefore the number of people remaining. What does this give us? 
+
+
+
 
 
 
