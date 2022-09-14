@@ -289,6 +289,10 @@ So, I'm now happy that I have some intuition around how to translate from a set 
 
 I'm not exactly sure how to go in the other direction (Breda says that it's an iff, but I've only gone ODE $\rightarrow$ renewal equation). Still, this is a good place to start. 
 
+---
+
+The next thing is to figure out what underlying assumptions are baked into the $A(\tau)$. Clearly it's a little bit of infectiousness, a little bit of recovery, a little bit of natural history of infection, a little bit of contact rates, a little bit of distances. I want to build this up piece by piece. 
+
 
 
 
