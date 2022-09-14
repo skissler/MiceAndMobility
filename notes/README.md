@@ -4,6 +4,7 @@ __Jump to__
 - [2 Aug 2022](#2-Aug-2022)
 - [26 Aug 2022](#26-Aug-2022)
 - [9 Sep 2022](#9-Sep-2022)
+- [13 Sep 2022](#13-Sep-2022)
 
 
 # 18 July 2022 
@@ -183,6 +184,10 @@ Thinking of things to put into a grant proposal:
 
 the infectiousness distribution (the thing you integrate to get R0) is a function of things both inherent to the virus and to behavior - critically, to the way people move and interact. How can we build this up from first principles? What data would we need to collect to specify this? What underlying mechanics are consistent with a given epidemiological model?
 
+
+# 13 Sep 2022
+
+I've gone back to Breda _et al._'s paper, ["On the formulation of epidemic models (an appraisal of Kermack and McKendrick)"](https://www.tandfonline.com/doi/full/10.1080/17513758.2012.716454) to get to grips with renewal equations. I think I've gotten the intuition and its link with the mathematics. I'm going to write it out here so I can refer back when I need to:
 
 
 
