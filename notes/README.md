@@ -293,6 +293,8 @@ I'm not exactly sure how to go in the other direction (Breda says that it's an i
 
 The next thing is to figure out what underlying assumptions are baked into the $A(\tau)$. Clearly it's a little bit of infectiousness, a little bit of recovery, a little bit of natural history of infection, a little bit of contact rates, a little bit of distances. I want to build this up piece by piece. 
 
+How can we build up an $A(\tau$) from a statistical mechanic standpoint? Let's start with the SIR: 
+
 
 
 
