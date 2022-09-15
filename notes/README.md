@@ -5,6 +5,7 @@ __Jump to__
 - [26 Aug 2022](#26-Aug-2022)
 - [9 Sep 2022](#9-Sep-2022)
 - [13 Sep 2022](#13-Sep-2022)
+- [14 Sep 2022](#14-Sep-2022)
 
 
 # 18 July 2022 
@@ -299,6 +300,14 @@ I think that the assumption here is that a person has constant infectiousness fo
 
 The first step, I think, is to make sure that this re-captures the form of $A(\tau)$ that we expect. Then, we can ask: are there other underlying dynamics that would be conisistent with this? 
 
+
+# 14 Sep 2022
+
+I like the idea of simulating infections in a circle. I also think that one way to run these simulations and to get back something like $A(\tau)$ would be to just run the simulation in a population where just one person is infected, and stop the simulation after the person has recovered (or at some max time, if we let the person be infectious forever; but I can't imagine we'll be doing that). 
+
+If we do that, then we should get a distribution for the number of infections and the times of those infections - which should give us $A(\tau)$ directly. 
+
+It would be good to have this running so that we can have a simulation framework for testing whatever theory we come up with. Seems like this is what Casey did with the testing framework that she and Dan are working on. 
 
 
 
