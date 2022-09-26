@@ -22,6 +22,7 @@ update_pos <- function(x, sigma, domainwidth){
 #     stp: k if d ≤ d*, 0 otherwise.
 #     pow: k/(1 + d^alpha)
 #     exp: k e^(-phi*d)
+#     flt: k
 episim <- function(k=1, scale=1, mu=1, sigma=1, domainwidth=10, kernel="exp"){
 
   # Set initial conditions 
@@ -46,7 +47,9 @@ episim <- function(k=1, scale=1, mu=1, sigma=1, domainwidth=10, kernel="exp"){
     lambda <- k/(1 + d^scale)
   } else if(kernel=="stp"){
     lambda <- ifelse(d <= scale, k, 0)
-  } else {
+  } else if(kernel=="flt"){
+    lambda <- k
+  } {
     stop("Unspecified kernel")
   }
   
@@ -159,18 +162,64 @@ makevideo <- function(eventlist, tstep, file="anim.gif"){
 
 
 
+episim_circ <- function(k=1, scale=1, mu=1, sigma=1, radius=1, kernel="exp"){
 
+  # Set initial conditions 
+  t <- 0
+  rvals <- radius*sqrt(runif(nindiv))
+  thetavals <- 2*pi*runif(nindiv)
+  pos_df <- tibble(x=rvals*cos(thetavals), y=rvals*sin(thetavals))
+  
+  IsInf <- 0
+  eventlist <- tibble(t=t, 
+    Sposx=Sposx, Sposy=Sposy, 
+    Iposx=Iposx, Iposy=Iposy, 
+    IsInf=IsInf)
 
+  while(IsInf<1){
 
+  # Calculate key parameters 
+  d <- sqrt((Sposx-Iposx)^2 + (Sposy-Iposy)^2)
+  if(kernel=="exp"){
+    lambda <- k*exp(-scale*d)  
+  } else if(kernel=="pow"){
+    lambda <- k/(1 + d^scale)
+  } else if(kernel=="stp"){
+    lambda <- ifelse(d <= scale, k, 0)
+  } else if(kernel=="flt"){
+    lambda <- k
+  } else {
+    stop("Unspecified kernel")
+  }
+  
+  cumrate <- 2*mu + lambda
 
+  # Simulate the time of the next event
+  t <- t+rexp(1, rate=cumrate)
 
+  # Draw the event 
+  eventdraw <- runif(1)
+  if(eventdraw < mu/cumrate){ # S moves
+    Sposx <- update_pos(Sposx, sigma, domainwidth)
+    Sposy <- update_pos(Sposy, sigma, domainwidth)
+  } else if(eventdraw < 2*mu/cumrate){ # I moves
+    Iposx <- update_pos(Iposx, sigma, domainwidth)
+    Iposy <- update_pos(Iposy, sigma, domainwidth)
+  } else { # S gets infected
+    IsInf <- 1
+  }
 
+  # Update the event list
+  eventlist <- bind_rows(eventlist, tibble(t=t, 
+    Sposx=Sposx, Sposy=Sposy, 
+    Iposx=Iposx, Iposy=Iposy, 
+    IsInf=IsInf))
+  
+  }
 
+  return(eventlist)
 
-
-
-
-
+}
 
 
 
