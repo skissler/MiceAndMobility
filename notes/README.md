@@ -6,6 +6,7 @@ __Jump to__
 - [9 Sep 2022](#9-Sep-2022)
 - [13 Sep 2022](#13-Sep-2022)
 - [14 Sep 2022](#14-Sep-2022)
+- [10 Nov 2022](#10-Nov-2022)
 
 
 # 18 July 2022 
@@ -16,13 +17,19 @@ We're starting with a straightforward toy model that specifies the instantaneous
 
 - A step function: 
 
-$$
-	\lambda(d) = 
-	\begin{cases} 
-		k & d \leq d^* \\ 
-		0 & d > d^*
-	\end{cases} 
 $$ 
+	\lambda(d) = \begin{cases}
+	k & d \leq d^{\*} \\
+	0 & d > d^{\*}
+	\end{cases}
+$$ 
+
+<!-- $$
+  \lambda(d) =  \begin{cases} 
+  	k & d \leq d^* \\ 
+  	0 & d > d^* 
+  \end{cases} 
+$$  -->
 
 <p align="center">
 <img src="2022-07-18-stepfun.png" style="width:50%">
@@ -144,7 +151,7 @@ $$ \frac{1}{1 + e^{-x}} $$
 
 Alright - I've ended up with something like 
 
-$$ \lambda(d) = \frac{k \Bigl[1 + (1 - \frac{\phi d^* }{\alpha})^\alpha\Bigr]}{1 + \Bigl(1 + \frac{\phi (d - d^* )}{\alpha}\Bigr)^\alpha} $$
+$$ \lambda(d) = \frac{k \Bigl[1 + (1 - \frac{\phi d^{\*} }{\alpha})^\alpha\Bigr]}{1 + \Bigl(1 + \frac{\phi (d - d^{\*} )}{\alpha}\Bigr)^\alpha} $$
 
 That's almost it - it behaves like I want it to for large $\alpha$, but strangely for small parameter values (near 1). Getting somewhere though. 
 
@@ -310,14 +317,28 @@ If we do that, then we should get a distribution for the number of infections an
 It would be good to have this running so that we can have a simulation framework for testing whatever theory we come up with. Seems like this is what Casey did with the testing framework that she and Dan are working on. 
 
 
+# 10 Nov 2022
+
+Yikes. Don't look at that last date gap. 
+
+After the last meeting with Mark, we agreed that it would be worth ironing out the statistical mechanic framework behind the SIR - at least enough to get a preliminary paper written, and maybe the start of a larger grant. 
+
+To get there, I need to do some mathematical analysis, but I'd also like to run some simulations using different individual generation interval distributions that all sum to the same population-level generation interval distribution. I've made an early attempt at that in `threekernelsim.R`, but something isn't working right there. I'm going to take a step back and think about how to structure that code, and maybe take a second approach. 
+
+So, the structure: 
+
+I think there must be some way of simulating when the next event occurs... when rates are constant, the time of the next event is exponentially distributed with rate equal to the total rate of all events occuring. I guess rather than going stepwise like I originally had, we could integrate forward for all time(?) and ask how many events occur in some (long) time horizon, say until some tmax end of the epidemic. But then we still only step forward to the next event, which we have to find somehow. And i think once we do that, we start the whole process again; yes? I think that makes sense, since all of the events should be independent. 
+
+We need some notation, so that we can attack this in a general sense. Let's say that $f_i(t)$ is the infectiousness distribution for person $i$. Then, $F_i(t) = \int_{0}^t f_i(u) du$ is the cumulative infectiousness between time 0 and time $t$. For most well-behaved $f$, we should be able to calculate $F$ explicitly, for any $t$. 
+
+When we have, then the total infectiousness between time 0 and time $t$ should be 
+
+$$ \sum_i F_i(t) $$ 
+
+yes? 
 
 
-
-
-
-
-
-
+This looks extremely useful re:simulation: https://pubs.acs.org/doi/10.1021/jp993732q
 
 
 
