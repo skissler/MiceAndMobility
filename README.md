@@ -1,6 +1,7 @@
 # Inferring probability of infection by proximity and duration
 [Stephen Kissler](mailto:skissler@hsph.harvard.edu)
 
+See working paper [here](https://docs.google.com/document/d/1MKD1yEVjnUsMBHBLIqjs_Y9VeoP6DnCrDUFLT2LUCw8/edit?usp=sharing)
 
 ---
 
