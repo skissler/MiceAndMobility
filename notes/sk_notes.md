@@ -33,7 +33,7 @@ $$
 $$  -->
 
 <p align="center">
-<img src="2022-07-18-stepfun.png" style="width:50%">
+<img src="images/2022-07-18-stepfun.png" style="width:50%">
 </p>
 
 - A power-law decay with distance: 
@@ -43,7 +43,7 @@ $$
 $$ 
 
 <p align="center">
-<img src="2022-07-18-powerfun.png" style="width:50%">
+<img src="images/2022-07-18-powerfun.png" style="width:50%">
 </p>
 
 - An exponential decay with distance: 
@@ -53,7 +53,7 @@ $$
 $$ 
 
 <p align="center">
-<img src="2022-07-18-expfun.png" style="width:50%">
+<img src="images/2022-07-18-expfun.png" style="width:50%">
 </p>
 
 The questions become: 
@@ -79,13 +79,13 @@ Let's start with some simple visualizations of the time to infection occuring, i
 First, here's a histogram of the times when infections occur: 
 
 <p align="center">
-<img src="2022-07-18-tinfhist.png" style="width:50%">
+<img src="images/2022-07-18-tinfhist.png" style="width:50%">
 </p>
 
 Seems... reasonable. Now let's look at the distance between individuals when the infection occurs: 
 
 <p align="center">
-<img src="2022-07-18-dinfhist.png" style="width:50%">
+<img src="images/2022-07-18-dinfhist.png" style="width:50%">
 </p>
 
 Seems like this will be much more informative (for the step function, for example, we wouldn't see any infections occurring past $d^* $). 
@@ -95,35 +95,35 @@ Seems like this will be much more informative (for the step function, for exampl
 I've now implemented the power and step kernels. Let's have a look at what the time and distance of infection looks like for these, side-by-side with the exponential kernel: 
 
 <p align="center">
-<img src="dinf_stp.png" style="width:50%">
+<img src="images/dinf_stp.png" style="width:50%">
 </p>
 
 <p align="center">
-<img src="dinf_pow.png" style="width:50%">
+<img src="images/dinf_pow.png" style="width:50%">
 </p>
 
 <p align="center">
-<img src="dinf_exp.png" style="width:50%">
+<img src="images/dinf_exp.png" style="width:50%">
 </p>
 
 and the times of infection: 
 
 <p align="center">
-<img src="tinf_stp.png" style="width:50%">
+<img src="images/tinf_stp.png" style="width:50%">
 </p>
 
 <p align="center">
-<img src="tinf_pow.png" style="width:50%">
+<img src="images/tinf_pow.png" style="width:50%">
 </p>
 
 <p align="center">
-<img src="tinf_exp.png" style="width:50%">
+<img src="images/tinf_exp.png" style="width:50%">
 </p>
 
 Let's have a look at exactly what the kernels look like (how should we ensure comparability between them, somehow? something like a common area under the curve?): 
 
 <p align="center">
-<img src="kernels.png" style="width:50%">
+<img src="images/kernels.png" style="width:50%">
 </p>
 
 Given this, it makes sense why the power function would yield such shorter times-to-infection, since there's still substantial force of infection even at the longest distances. The exponential kernel looks a lot more like the step kernel. 
