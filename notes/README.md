@@ -7,6 +7,7 @@ __Jump to__
 - [13 Sep 2022](#13-Sep-2022)
 - [14 Sep 2022](#14-Sep-2022)
 - [10 Nov 2022](#10-Nov-2022)
+- [1 Jan 2023](#1-Jan-2023)
 
 
 # 18 July 2022 
@@ -342,15 +343,51 @@ This looks extremely useful re:simulation: https://pubs.acs.org/doi/10.1021/jp99
 
 
 
+# 1 Jan 2023
+
+
+Working on simulating infection dynamics with different individual-level infectiousness kernels. 
+
+An individual infectiousness kernel (for person _i_) is, say, 
+
+$$ \lambda_i(t)/N $$ 
+
+where _N_ is the population size; we need this normalization so that when we integrate $\lambda_i(t)$ from t = 0 to infinity, we get the individual reproduction number, and yet when we propagate infections (integrating the product of this thing times the number of susceptibles), we get the proper thing. 
+
+But we want this in a stochastic framework: how exactly do we link these infectiousness profiles with a stochastic infection rate? 
+
+Think about the basic SIR: we have constant infectiousness, for an exponentially-dsitributed amount of time. For a person whose infectiousness lasts for the average amount of time, we should get a total area under the curve equal to the reproduction number. So, say that a person is infectious for five days on average, and the reproduction number is 2; then the infectiousness profile should be something like y=2/5 between 0 and 5, and 0 thereafter. The infectiousness profile is y=2/5 for everyone, for as long as they're infectious; it's just that the end of infectiousness is exponentially distributed. 
+
+Then, what does this mean in a stochastic framework? Let's think from the perspective of a susceptible person: that person will become infected at time _t_ with probability $\frac{1}{N} (1 - e^{-2t/5})$
 
 
 
+The probability of any single susceptible person being infected needs to be 2/N. Right? So maybe exponentiation isn't the right thing here: we just have the probability of infection being 
 
+$$ \frac{1}{N} \frac{2t}{5}$$ 
 
+$$ = \frac{1}{N} \int_t \lambda_i(u) du $$ 
 
+I think, too, that $\lambda_i(t)$ should give the distribution of when the infections occur - and also, I think, this should mean that when we have multiple people infected, the timing will follow the distribution given by 
 
+$$ \sum_i \lambda_i(t) $$ 
 
+So the algorithm could look something like: 
 
+- Shoot forward some time step $\Delta t$ and calculate the number of infections. This will be a Binomial distribution with probability $p = \frac{1}{N} \sum_i \int_t \lambda_i(u) du$. 
+- If infections occurred, we need to draw their times. These times are distributed as $f(t) = \sum_i \lambda_i(t)$. 
+- Take just the first infection. Update the system and start again from the time of that infection. 
 
+The trick will be finding a way to do this quickly. 
 
+Can we do all of these calculations in terms of the cumulative infectiousness profiles? 
 
+$$ p = \frac{1}{N} \sum_i [\Lambda_i(t + \Delta t) - \Lambda_i(t)]$$ 
+
+$$ F(t) = \int_{[0,t]} \sum_i \lambda_i(u) du$$ 
+
+$$ F(t) = \sum_i \int_{[0,t]} \lambda_i(u) du$$ 
+
+$$ F(t) = \sum_i \Lambda_i(t) $$ 
+
+I think this is right... clearly F is unnormalized so far, but I don't think we care about that. Ideally we could use the inverse CDF method here... 
