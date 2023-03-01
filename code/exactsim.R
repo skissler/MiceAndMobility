@@ -54,72 +54,110 @@ tauistar <- rexp(N, gamma)
 # Simulate
 # =============================================================================
 
-tstep <- 1
+# source('code/exactsim.R'); tinfvec[tinfvec<Inf]
+
 tmax <- 100
 
-ivec <- rep(0,N)
 tinfvec <- rep(Inf,N)
 
-ivec[sample(N,1)] <- 1
-tinfvec[ivec==1] <- 0
+tinfvec[1] <- 0
 
-# calc_total_force(t, ivec, tinfvec) 
+t <- 0
+infcounter <- 2 
 
-# draw_new_infs(ivec, force) 
+while(t < tmax){
+	infremaining <- tauistar - (t - tinfvec)
+	delta <- min(infremaining[infremaining>0.000001]) # if Inf, stop sim
+	if(delta==Inf){
+		break()
+	}
 
-# draw_inf_timing(tinf, ivec, tinfvec) 
+	# How many people are currently contributing to infectiousness? 
+	# That's people who have been infected and not yet recovered: 
+	ninf <- sum((tinfvec < Inf) & (tauistar > t-tinfvec))
+
+	# Calculate the total force over the time period from these people: 
+	Ftot <- ninf*beta*delta
+	pinf <- 1-exp(-Ftot/N)
+
+	newinf <- rbinom(1,N-sum(tinfvec<Inf),pinf)
+
+	# Draw times for the new infections: (add clause where if there are no infections we skip this and set t <- t+delta) 
+	if(newinf > 0){
+		t <- t + min(runif(newinf))*delta
+		tinfvec[infcounter] <- t
+		infcounter <- infcounter + 1	
+	} else {
+		t <- t+delta
+	}
+}
+
+
+tinfdf <- tibble(tinf=tinfvec, taui=tauistar) %>% 
+	mutate(trec=tinf+taui)
+
+plottimes <- seq(from=0,to=tmax,by=1)
+plotinfs <- lapply(plottimes, function(x){
+	return(nrow(tinfdf %>% filter(tinf<=x & trec>x)))
+	}) %>% unlist()
+
+fig_icurve <- tibble(t=plottimes,inf=plotinfs) %>% 
+	ggplot(aes(x=t, y=inf)) +
+		geom_line() + 
+		theme_classic()
 
 
 # =============================================================================
 # Test
 # =============================================================================
 
-# Initialize time 
-t <- 0
 
-while(t<tmax){
+# # Initialize time 
+# t <- 0
 
-	# Calculate total force 
-	tau <- t-tinfvec
-	tau[tau>tauistar] <- tauistar[tau>tauistar]
-	Fi <- ((beta*(tau+tstep)) - (beta*tau))[ivec==1]
-	Ftot <- sum(Fi)
+# while(t<tmax){
 
-	# Draw new infections 
-	pinf <- 1-exp(-Ftot/N)
-	ninf <- rbinom(1,N-sum(ivec),pinf)
+# 	# Calculate total force 
+# 	tau <- t-tinfvec
+# 	tau[tau>tauistar] <- tauistar[tau>tauistar]
+# 	Fi <- ((beta*(tau+tstep)) - (beta*tau))[ivec==1]
+# 	Ftot <- sum(Fi)
 
-	# Determine the first infection
-	if(ninf>0){
+# 	# Draw new infections 
+# 	pinf <- 1-exp(-Ftot/N)
+# 	ninf <- rbinom(1,N-sum(ivec),pinf)
 
-
-	} else {
-		t <- t+tstep
-	}
+# 	# Determine the first infection
+# 	if(ninf>0){
 
 
-}
+# 	} else {
+# 		t <- t+tstep
+# 	}
 
 
-# =============================================================================
+# }
 
-tinfvec <- rep(Inf,N)
-tinfvec[sample(N, 50)] <- runif(50)*10
-ivec <- rep(0,N)
-ivec[tinfvec<Inf]<-1
 
-t <- 11
-ftot <- function(t){
-	out <- sum((beta*pmin(tauistar, t-tinfvec))[ivec==1])/N
-	return(out)
-}
+# # =============================================================================
 
-# The full cumulative infectiousness profile:
-tvec <- seq(from=10, to=100, by=0.1) 
-yvec <- unlist(lapply(tvec, ftot))
-tibble(t=tvec,y=yvec) %>% ggplot(aes(x=t,y=y)) + geom_line() + theme_classic()
+# tinfvec <- rep(Inf,N)
+# tinfvec[sample(N, 50)] <- runif(50)*10
+# ivec <- rep(0,N)
+# ivec[tinfvec<Inf]<-1
 
-# The truncated infectiousness CDF: 
-tvec <- seq(from=10, to=40, by=0.1) 
-yvec <- (unlist(lapply(tvec, ftot))-ftot(10))/(ftot(40)-ftot(10))
-tibble(t=tvec,y=yvec) %>% ggplot(aes(x=t,y=y)) + geom_line() + theme_classic()
+# t <- 11
+# ftot <- function(t){
+# 	out <- sum((beta*pmin(tauistar, t-tinfvec))[ivec==1])/N
+# 	return(out)
+# }
+
+# # The full cumulative infectiousness profile:
+# tvec <- seq(from=10, to=100, by=0.1) 
+# yvec <- unlist(lapply(tvec, ftot))
+# tibble(t=tvec,y=yvec) %>% ggplot(aes(x=t,y=y)) + geom_line() + theme_classic()
+
+# # The truncated infectiousness CDF: 
+# tvec <- seq(from=10, to=40, by=0.1) 
+# yvec <- (unlist(lapply(tvec, ftot))-ftot(10))/(ftot(40)-ftot(10))
+# tibble(t=tvec,y=yvec) %>% ggplot(aes(x=t,y=y)) + geom_line() + theme_classic()
