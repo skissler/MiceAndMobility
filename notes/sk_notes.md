@@ -413,7 +413,11 @@ Here's what the truncated CDF might look like (this was made with 50 people curr
 <img src="images/2023-03-01-cdf.png" style="width:50%">
 </p>
 
+I think we might be able to get the equation of this CDF by thinking about the constraints: 
 
+- Must start at y = 0 and end at y = 1. 
+- Each person contributes some factor $\sigma$ to the slope, such that the slope begins at $ninf*\sigma$
+- At each $\tau_i^*$, the slope decreases by one $\sigma$, until we get through all of the $\tau_i^*$ and the slope becomes zero 
 
 
 
