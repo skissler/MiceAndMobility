@@ -416,7 +416,7 @@ Here's what the truncated CDF might look like (this was made with 50 people curr
 I think we might be able to get the equation of this CDF by thinking about the constraints: 
 
 - Must start at y = 0 and end at y = 1. 
-- Each person contributes some factor $\sigma$ to the slope, such that the slope begins at $ninf \times \sigma$
+- Each person contributes some factor $\sigma$ to the slope, such that the slope begins at $n_{inf} \times \sigma$
 - At each $\tau_i*$, the slope decreases by one $\sigma$, until we get through all of the $\tau_i^*$ and the slope becomes zero. Otherwise, say we have $r$ people who are still infectious at the end of the time window; then the slope at the end is $r \sigma$. 
 
 
