@@ -6,17 +6,23 @@
 library(tidyverse) 
 library(purrr)
 
+
 # Set epidemiological parameters:
 N <- 1000
 beta <- 1/3
 gamma <- 1/5
 
-# Draw infectious periods for each person: 
-tauistar <- rexp(N, gamma)
+
 
 # =============================================================================
 # Simulate
 # =============================================================================
+
+tinflist <- list()
+for(its in 1:500){
+
+# Draw infectious periods for each person: 
+tauistar <- rexp(N, gamma)
 
 # Set a max number of days for simulation
 tmax <- 100
@@ -61,6 +67,8 @@ while(t < tmax){
 		t <- t+delta
 	}
 }
+tinflist[[its]] <- tibble(tinf=tinfvec,tauistar=tauistar)
+}
 
 # Collect infection times into a table: 
 tinfdf <- tibble(tinf=tinfvec, taui=tauistar) %>% 
@@ -75,3 +83,31 @@ fig_icurve <- tibble(t=plottimes,inf=plotinfs) %>%
 	ggplot(aes(x=t, y=inf)) +
 		geom_line() + 
 		theme_classic()
+
+
+geti <- function(tinfdf, plottimes){
+
+	out <- lapply(plottimes, function(x){
+		return(nrow(tinfdf %>% filter(tinf<=x & trec>x)))
+		}) %>% 
+		unlist()
+	return(out)
+
+}
+
+# Plot all the curves in the list: 
+plottimes <- seq(from=0,to=tmax,by=1)
+temp <- tinflist %>% 
+	map(~ mutate(., trec=tinf+tauistar)) %>% 
+	map(~ geti(., plottimes)) %>% 
+	map(~ tibble(t=plottimes, inf=.)) %>% 
+	bind_rows(.id="iteration")
+
+fig_temp <- temp %>% 
+	ggplot(aes(x=t, y=inf, group=factor(iteration))) + 
+		geom_line(alpha=0.2) + 
+		theme_classic() + 
+		theme(legend.position="none")
+
+
+
