@@ -407,6 +407,10 @@ The key thing now is writing down the inverse CDF for the total infectiousness..
 
 At time t, the total infectiousness is equal to the number of currently infectious people who haven't yet hit $\tau_i*$. Each time we hit someone else's $\tau_i*$, the slope of the cdf decreases by... something. What? 
 
+<p align="center">
+<img src="images/2023-03-01-cdf.png" style="width:50%">
+</p>
+
 
 
 
