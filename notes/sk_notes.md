@@ -8,6 +8,8 @@ __Jump to__
 - [14 Sep 2022](#14-Sep-2022)
 - [10 Nov 2022](#10-Nov-2022)
 - [1 Jan 2023](#1-Jan-2023)
+- [28 Feb 2023](#28-Feb-2023)
+- [1 Mar 2023](#1-Mar-2023)
 
 
 # 18 July 2022 
@@ -391,3 +393,34 @@ $$ F(t) = \sum_i \int_{[0,t]} \lambda_i(u) du$$
 $$ F(t) = \sum_i \Lambda_i(t) $$ 
 
 I think this is right... clearly F is unnormalized so far, but I don't think we care about that. Ideally we could use the inverse CDF method here... 
+
+
+# 28 Feb 2023
+
+Big date gap, but not because I haven't been thinking about this. I'm going to start writing up some code to do a stochastically exact (I think) simulation of various epidemic scenarios with different individual-level infectiousness profiles that all integrate up to the same population-level infectiousness profile. We'll see how it goes. I've started a new branch - MakeExplicitSim - for this. 
+
+# 1 Mar 2023
+
+Making some progress. I'm working on the standard SIR assumption, with constant $\beta$ contribution to infectiousness until the recovery time. 
+
+The key thing now is writing down the inverse CDF for the total infectiousness... 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
