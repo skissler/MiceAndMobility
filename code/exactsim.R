@@ -5,7 +5,7 @@
 # Import packages:
 library(tidyverse) 
 library(purrr)
-
+library(deSolve)
 
 # Set epidemiological parameters:
 N <- 1000
@@ -108,6 +108,39 @@ fig_temp <- temp %>%
 		geom_line(alpha=0.2) + 
 		theme_classic() + 
 		theme(legend.position="none")
+
+
+sir <- function(t,state,parameters){
+	with(as.list(c(state,parameters)), {
+
+		dS <- -beta*I*S
+		dI <- beta*I*S - gamma*I
+		dR <- gamma*I
+
+		list(c(dS, dI, dR))
+
+		})
+}
+
+parameters <- c(beta=beta, gamma=gamma) 
+state <- c(S=1-1/N, I=1/N, R=0)
+times <- seq(from=0, to=100, by=0.01)
+
+sirout <- ode(y = state, times = times, func = sir, parms = parameters) %>% 
+	data.frame() %>% 
+	as_tibble()
+
+tempmean <- temp %>% 
+	group_by(iteration) %>% 
+	mutate(peak = max(inf)) %>% 
+	filter(peak>20) %>% 
+	group_by(t) %>% 
+	summarise(inf=mean(inf))
+
+
+fig_temp + 
+	geom_line(data=sirout, aes(x=time, y=I*N), col="lightgrey", group=1, size=1, alpha=1) + 
+	geom_line(data=tempmean, aes(x=t, y=inf), col="lightgrey", alpha=1, group=1, size=1, lty="dashed")
 
 
 
