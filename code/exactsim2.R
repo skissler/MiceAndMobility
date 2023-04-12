@@ -245,6 +245,89 @@ ggsave(fig_Asir, file="figures/Asir.pdf", width=3.5, height=3.5/1.6)
 ggsave(fig_Aexp, file="figures/Aexp.pdf", width=3.5, height=3.5/1.6)
 ggsave(fig_Adel, file="figures/Adel.pdf", width=3.5, height=3.5/1.6)
 
+# Final size: -----------------------------------------------------------------
+
+plotFSdists <- function(simoutdflist, modelnames=1:1000, binwidth=5, plotdensity=FALSE){
+
+	cuminfdf <- simoutdflist[[1]] %>% 
+		group_by(sim) %>% 
+		summarise(cuminf=max(cuminf)) %>% 
+		mutate(model=modelnames[1])
+
+	if(length(simoutdflist)>1){
+
+		for(indexA in 2:length(simoutdflist)){
+			cuminfdf <- bind_rows(cuminfdf, (simoutdflist[[indexA]] %>% 
+				group_by(sim) %>% 
+				summarise(cuminf=max(cuminf)) %>% 
+				mutate(model=modelnames[indexA])))
+		}
+
+	}
+
+
+	out <- cuminfdf %>% 
+		mutate(model=factor(model, levels=modelnames)) %>% 
+		ggplot(aes(x=cuminf)) + 
+			geom_histogram(aes(y=..density..), binwidth=binwidth, fill="white", col="darkgrey") + 
+			facet_wrap(~model) + 
+			theme_classic() + 
+			labs(x="Cumulative infections", y="Proportion of simulations") + 
+			theme(text=element_text(size=9))
+
+	if(plotdensity){
+		out <- out + geom_density(adjust=0.5)
+	}
+
+	return(out)
+
+}
+
+fig_FSdists <- plotFSdists(list(simoutdf_sir, simoutdf_exp, simoutdf_del), modelnames=c("SIR","Exponential","Delta function"), binwidth=2)
+ggsave(fig_FSdists, file="figures/FSdists.pdf", width=3.5, height=3.5/1.6)
+
+# Time to 100 infections: -----------------------------------------------------
+
+plottimetox <- function(simoutdflist, threshold, modelnames=1:1000, binwidth=5, plotdensity=FALSE){
+
+	ttxdf <- simoutdflist[[1]] %>% 
+		group_by(sim) %>% 
+		filter(cuminf >= threshold) %>% 
+		arrange(tinf) %>% 
+		slice(1) %>% 	
+		mutate(model=modelnames[1]) 
+
+	if(length(simoutdflist)>1){
+
+		for(indexA in 2:length(simoutdflist)){
+			ttxdf <- bind_rows(ttxdf, (simoutdflist[[indexA]] %>% 
+				group_by(sim) %>% 
+				filter(cuminf >= threshold) %>% 
+				arrange(tinf) %>% 
+				slice(1) %>% 	
+				mutate(model=modelnames[indexA])))
+		}
+
+	}
+
+	out <- ttxdf %>% 
+		mutate(model=factor(model, levels=modelnames)) %>% 
+		ggplot(aes(x=tinf)) + 
+			geom_histogram(binwidth=binwidth, fill="white", col="darkgrey") + 
+			facet_wrap(~model) + 
+			theme_classic() + 
+			labs(x=paste0("Time to ",threshold," infections"), y="Number of simulations") + 
+			theme(text=element_text(size=9))
+
+
+	return(out)
+
+}
+
+fig_timeto50 <- plottimetox(list(simoutdf_sir, simoutdf_exp, simoutdf_del), threshold=50, modelnames=c("SIR","Exponential","Delta function"), binwidth=2)
+ggsave(fig_timeto50, file="figures/timeto50.pdf", width=3.5, height=3.5/1.6)
+
+
 # =============================================================================
 # Raw Gillespie comparison
 # =============================================================================
