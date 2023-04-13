@@ -12,7 +12,7 @@ source('~/DropboxHarvard/Projects/EpiFuncs/code/infdurabm.R')
 # Define infectiousness kernels
 # =============================================================================
 
-N <- 100
+N <- 500
 beta <- 1/2
 gamma <- 1/5
 
@@ -177,11 +177,15 @@ sirout <- ode(y = state, times = times, func = sir, parms = parameters) %>%
 # Do repeated simulations
 # =============================================================================
 
-simoutdf_sir <- repsim(pkernel_sir, ckernel_sir, parsgen_sir, nsims=100, N=N, beta=beta, gamma=gamma)
+simoutdf_sir <- repsim(pkernel_sir, ckernel_sir, parsgen_sir, nsims=500, N=N, beta=beta, gamma=gamma)
 
-simoutdf_exp <- repsim(pkernel_exp, ckernel_exp, parsgen_exp, nsims=100, N=N, beta=beta, gamma=gamma)
+simoutdf_exp <- repsim(pkernel_exp, ckernel_exp, parsgen_exp, nsims=500, N=N, beta=beta, gamma=gamma)
 
-simoutdf_del <- repsim(pkernel_del, ckernel_del, parsgen_del, nsims=100, N=N, beta=beta, gamma=gamma)
+simoutdf_del <- repsim(pkernel_del, ckernel_del, parsgen_del, nsims=500, N=N, beta=beta, gamma=gamma)
+
+# save(simoutdf_sir, file="output/simoutdf_sir.RData")
+# save(simoutdf_exp, file="output/simoutdf_exp.RData")
+# save(simoutdf_del, file="output/simoutdf_del.RData")
 
 # =============================================================================
 # Basic plots 
